@@ -29,16 +29,14 @@
         {/foreach}
         <input type="hidden" name="entry[note]" value="{$entry.note|h}" />
         <input type="hidden" name="entry[birthday]" value="{$entry.birthday|h}" />
-	{if $conf.privatebook}
-        <button name="type" value="public" class="button">
-            <img src="pix/public.png" border="0" width="16" height="16" align="middle" alt="" />{$lang.publicbook}
-        </button>
-        <button name="type" value="private" class="button">
-            <img src="pix/private.png" border="0" width="16" height="16" align="middle" alt="" />{$lang.privatebook}
-        </button>
-	{else}
+        {if $conf.privatebook}
+        <label style="display:inline-block"><input type="radio" name="type" value="public">
+            <img src="pix/public.png" border="0" width="16" height="16" align="middle" alt="" />{$lang.publicbook}</label>
+        <label style="display:inline-block"><input type="radio" name="type" value="private">
+            <img src="pix/private.png" border="0" width="16" height="16" align="middle" alt="" />{$lang.privatebook}</label>
+        {else}
            <input type="hidden" name="type" value="public" />
-	{/if}
+        {/if}
            <input type="submit" name="save" value="save" />
         </form>
     </td>

@@ -37,8 +37,10 @@ if($_SESSION['ldapab']['username'] && !empty($_REQUEST['save']) && $_REQUEST['sa
     $_REQUEST['entry']['marker'] = explode(',',$_REQUEST['entry']['markers']);
   unset($_REQUEST['entry']['markers']);
 
+  if (empty($_REQUEST['entry']['country'])) { $_REQUEST['entry']['country']=$conf['country']; }
+
   foreach(array_keys($_REQUEST['entry']) as $field){
-      if($FIELDS['_'.$field]){
+      if($FIELDS['_'.$field] && $_REQUEST['entry'][$field]){
           // entry has to be handled as array -> clean it up (trim, unique, sort)
           $_REQUEST['entry'][$field] = array_map('trim',$_REQUEST['entry'][$field]);
           $_REQUEST['entry'][$field] = array_unique($_REQUEST['entry'][$field]);
